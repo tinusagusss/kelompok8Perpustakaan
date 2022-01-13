@@ -14,19 +14,23 @@ public class Display {
 		Scanner in = new Scanner(System.in);
         System.out.println();		        
         System.out.println("              *****************************************                  ");
-        System.out.println("              |      Selamat Datang Di Menu Utama     |                  ");
+        System.out.println("              |              Menu Utama               |                  ");
         System.out.println("              *****************************************                  ");
         System.out.println("              | Pilihan:                              |                  ");
-        System.out.println("              |        1. Data Karyawan Tetap         |                  ");
-        System.out.println("              |        2. Data Karyawan Kontrak       |                  ");
-        System.out.println("              |        3. Keluar Aplikasi             |                  ");
+        System.out.println("              |        1. Peminjaman Buku             |                  ");
+        System.out.println("              |        2. Pengembalian Buku           |                  ");
+        System.out.println("              |        3. Cari Peminjam Buku          |                  ");
+        System.out.println("              |        4. Daftar Peminjaman           |                  ");
+        System.out.println("              |        5. Hapus Peminjam Buku         |                  ");
+        System.out.println("              |        6. Hapus Otamatis              |                  ");
+        System.out.println("              |        0. Keluar Aplikasi             |                  ");
         System.out.println("              *****************************************                  ");	
         System.out.println();
         System.out.print("Pilih menu: ");
         menu = Integer.parseInt(in.next());
         
         
-        while (!(menu == 1 || menu == 2 || menu == 3 || menu == 4)) {
+        while (!(menu == 1 || menu == 2 || menu == 3 || menu == 4 || menu == 5 || menu == 6)) {
         	System.out.println("Warning: Menu yang Anda masukkan salah!");
         	System.out.println();
         	System.out.print("Silahkan pilih menu kembali: ");
@@ -41,7 +45,7 @@ public class Display {
 	        	FormView.formUpdateBoorBor();
 	        	break;
 	        case 3:
-	        	FormView.formUpdateBoorBor();
+	        	FormView.displayTableBookBor();
 	        	break;
 	        case 4:
 	        	FormView.displayTableBookBor();
@@ -49,7 +53,10 @@ public class Display {
 	        case 5:
 	        	FormView.formUpdateBoorBor();
 	        	break;
-	        case 9:
+	        case 6:
+	        	FormView.formUpdateBoorBor();
+	        	break;
+	        case 0:
 	        	System.out.println("Terima kasih, Anda keluar dari aplikasi!");
 	        	System.exit(0);
 	        default:
