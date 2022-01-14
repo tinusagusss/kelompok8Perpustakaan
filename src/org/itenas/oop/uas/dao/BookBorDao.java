@@ -16,5 +16,6 @@ public interface BookBorDao {
     public void deleteBookBor();
     public void deleteBookBor(Book bookBor);
     
+    public String getCodeBookBor();
     public int getDayDifference(Book bookBor);
 }

@@ -21,20 +21,19 @@ public class FormView {
 			Display.mainMenu();
 	}
 	
-	/* Memasukan Data Peminjaman   Buku */
+	/* Memasukan Data Peminjaman Buku */
 	public static void formInsertBookBor() {
-		System.out.println("              *****************************************                  ");
-        System.out.println("              | Form Insert Data Karyawan Tetap       |                  ");
-        System.out.println("              *****************************************                  ");
-        System.out.print("              | NIP			:");
-        bookBor.setCode(scanner.next());
-        System.out.print("              | Nama		        :");
+		System.out.println("              =========================================                 ");
+        System.out.println("              |      Form Insert Peminjaman Buku      |                  ");
+        System.out.println("              =========================================                  ");
+        System.out.print("              | ISBN		        :");
         bookBor.setIsbn(scanner.next());
         System.out.print("              | Email                   :");
         bookBor.setIdMem(scanner.next());
-        System.out.println("              *****************************************					 ");
+        System.out.println("              =========================================					 ");
+        bookBor.setCode(operation.getCodeBookBor());
         operation.saveBookBor(bookBor);
-        backToMainMenu();
+//        backToMainMenu();
 	}
 	
 	/* Pengembalian Buku */

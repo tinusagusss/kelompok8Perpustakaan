@@ -48,6 +48,35 @@ public class BookBorDaoImpl implements BookBorDao{
 	}
 	
 	@Override
+	public String getCodeBookBor() {		
+		DatabaseUtil db = new DatabaseUtil();
+		StringBuffer sb = null; 
+		String result = null;
+		try {
+			db.connect();
+ 
+            String query = "SELECT MAX(code) AS 'result' FROM book_loans;";
+            ResultSet rs = db.readData(query);
+ 
+            if (rs.next()) {
+            	sb = new StringBuffer(rs.getString("result"));
+            	sb.deleteCharAt(0);
+                int max = Integer.parseInt(sb.toString());
+                if(max > 0 && max <10)
+                	result = "B0" + (max + 1);
+                else
+                    result = "B" + (max + 1);
+            } else {
+            	return result = null;
+            }
+            db.disconnect();            
+ 
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+		return result;
+	}
+	@Override
 	public int getDayDifference(Book bookBor) {
 		DatabaseUtil db = new DatabaseUtil();
 		int result = 0;
