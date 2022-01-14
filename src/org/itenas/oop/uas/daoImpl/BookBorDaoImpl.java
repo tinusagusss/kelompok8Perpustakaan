@@ -15,10 +15,6 @@ public class BookBorDaoImpl implements BookBorDao{
 	
 	static DatabaseUtil db = new DatabaseUtil();
 	static String query;
-	@Override
-	public void getBookBorByCode(String code) {
-		
-	}
 	
 	@Override
 	public void saveBookBor(Book bookBor) {
@@ -32,9 +28,23 @@ public class BookBorDaoImpl implements BookBorDao{
 		} catch (Exception ex) {
 			System.out.println("Terjadi error: " + ex.getMessage());
 		}
-//		db.disconnect();
+		db.disconnect(0);
 	}
 	
+	@Override
+	public void PaymentBookBor(Book bookBor) {
+		try {
+			db.connect();
+			query = "INSERT INTO payment(id_mem, amount)\n"
+					+ " VALUES ('"+bookBor.getIdMem()+"', "
+					+ bookBor.getAmount()+");";
+			db.executeQuery(query);
+		} catch (Exception ex) {
+			System.out.println("Terjadi error: " + ex.getMessage());
+		}
+		db.disconnect(0);
+		
+	}
 	@Override
 	public void updateBookBor(Book bookBor) {
 		try {
@@ -44,7 +54,7 @@ public class BookBorDaoImpl implements BookBorDao{
 		} catch (Exception e) {
 			System.out.println("Terjadi error: " + e.getMessage());
 		}
-//		db.disconnect();
+		db.disconnect(0);
 	}
 	
 	@Override
@@ -62,7 +72,7 @@ public class BookBorDaoImpl implements BookBorDao{
             	sb = new StringBuffer(rs.getString("result"));
             	sb.deleteCharAt(0);
                 int max = Integer.parseInt(sb.toString());
-                if(max > 0 && max <10)
+                if(max > 0 && max <9)
                 	result = "B0" + (max + 1);
                 else
                     result = "B" + (max + 1);
@@ -83,12 +93,13 @@ public class BookBorDaoImpl implements BookBorDao{
 		try {
 			db.connect();
  
-            String query = "SELECT due_date - CURRENT_DATE() AS 'result' \n"
+            String query = "SELECT due_date - CURRENT_DATE() AS 'result', id_mem\n"
             		+ "FROM book_loans WHERE code = '"+bookBor.getCode()+"';";
             ResultSet rs = db.readData(query);
  
             if (rs.next()) {
                 result  = rs.getInt("result");
+                bookBor.setIdMem(rs.getString("id_mem"));
             } else {
             	return 0;
             }

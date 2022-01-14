@@ -41,6 +41,15 @@ public class DatabaseUtil {
             System.out.println("Terjadi error: " + e.getMessage());
         }
     }
+    
+    public void disconnect(int x) {
+        try {
+            connection.close();
+            statement.close();
+        } catch (Exception e) {
+            System.out.println("Terjadi error: " + e.getMessage());
+        }
+    }
 
     public ResultSet readData(String query) {
         try {

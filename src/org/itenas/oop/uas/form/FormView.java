@@ -28,7 +28,7 @@ public class FormView {
         System.out.println("              =========================================                  ");
         System.out.print("              | ISBN		        :");
         bookBor.setIsbn(scanner.next());
-        System.out.print("              | Email                   :");
+        System.out.print("              | ID Member               :");
         bookBor.setIdMem(scanner.next());
         System.out.println("              =========================================					 ");
         bookBor.setCode(operation.getCodeBookBor());
@@ -43,6 +43,7 @@ public class FormView {
         int nilai = operation.getDayDifference(bookBor);
         if (nilai < 0) {
         	System.out.println("Denda : " + bookBor.getRansom(nilai));
+        	operation.PaymentBookBor(bookBor);
 		} else {
 			System.out.println("Tidak ada Denda");
 		}

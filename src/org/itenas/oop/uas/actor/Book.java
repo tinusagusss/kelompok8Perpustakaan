@@ -48,18 +48,22 @@ public class Book {
 		return status;
 	}
 	
+	private double amount;
+	
+	public double getAmount() {
+		return amount;
+	}
+	
 	public double getTotalFine(int day) {
-		double result;
 		
-		result = 5000 * Math.abs(day);
+		this.amount = 5000 * Math.abs(day);
 		
-		return result;
+		return amount;
 	}
 	
 	public double getRansom(int day) {
-		double result = 0;
 		if(day < 0)
-			return result = getTotalFine(day);
+			return getTotalFine(day);
 		else
 			return 0;
 	}
