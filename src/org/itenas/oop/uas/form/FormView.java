@@ -76,6 +76,7 @@ public class FormView {
         backToMainMenu();
 	}
 	
+	/* Tugas 1: Step 1: Perbaiki Tampilan pada displayTableBookBor*/
 	public static void displayTableBookBor() {
 		System.out.println();
 		System.out.println("     ----------------------------------------------------------------------------------------------------------------");

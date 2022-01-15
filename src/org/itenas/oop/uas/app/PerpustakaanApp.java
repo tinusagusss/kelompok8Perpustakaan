@@ -8,7 +8,7 @@ public class PerpustakaanApp {
 
 	public static void main(String[] args) {
 		
-		FormView.formInsertBookBor();
+		FormView.displayTableBookBor();
 		
 //		Display.loginMenu();
 
