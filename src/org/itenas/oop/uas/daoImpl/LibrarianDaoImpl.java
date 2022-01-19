@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import org.itenas.oop.uas.actor.Librarian;
 import org.itenas.oop.uas.dao.LibrarianDao;
 import org.itenas.oop.uas.database.DatabaseUtil;
+import org.itenas.oop.uas.entity.Librarian;
 
 public class LibrarianDaoImpl implements LibrarianDao {
 	@Override

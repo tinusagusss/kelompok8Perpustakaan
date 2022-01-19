@@ -3,13 +3,10 @@ package org.itenas.oop.uas.daoImpl;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
-import org.itenas.oop.uas.actor.Member;
 import org.itenas.oop.uas.dao.MemberDao;
 import org.itenas.oop.uas.database.DatabaseUtil;
+import org.itenas.oop.uas.entity.Member;
 
 public class MemberDaoImpl implements MemberDao{
 
@@ -28,8 +25,7 @@ public class MemberDaoImpl implements MemberDao{
             String query = "SELECT * FROM member WHERE name = '"+name+"';";
             ResultSet rs = db.readData(query);
             System.out.println(query);
- 
-            // process query results
+
             if (rs.next()) {
  
                 ResultSetMetaData metaData = rs.getMetaData();
@@ -48,13 +44,11 @@ public class MemberDaoImpl implements MemberDao{
             	member.setId(null);
             }
 
-            //close db connection
             db.disconnect();            
  
         } catch (SQLException ex) {
             System.out.println("The following error has occured: " + ex.getMessage());
         }
-		System.out.println("Berhasil");
 		
 	}
 
@@ -69,7 +63,6 @@ public class MemberDaoImpl implements MemberDao{
             ResultSet rs = db.readData(query);
             System.out.println(query);
  
-            // process query results
             if (rs.next()) {
  
                 ResultSetMetaData metaData = rs.getMetaData();
@@ -88,13 +81,10 @@ public class MemberDaoImpl implements MemberDao{
             	member.setId(null);
             }
 
-            //close db connection
             db.disconnect();            
  
         } catch (SQLException ex) {
             System.out.println("The following error has occured: " + ex.getMessage());
         }
-		System.out.println("Berhasil");
-//*		TableView.displayTupleMember(Member);
 	}
 }

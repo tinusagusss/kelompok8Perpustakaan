@@ -1,6 +1,7 @@
 package org.itenas.oop.uas.daoImpl;
 
 import org.itenas.oop.uas.database.DatabaseUtil;
+import org.itenas.oop.uas.entity.BookBor;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import org.itenas.oop.uas.actor.Book;
 import org.itenas.oop.uas.dao.BookBorDao;
 
 public class BookBorDaoImpl implements BookBorDao{
@@ -17,7 +17,7 @@ public class BookBorDaoImpl implements BookBorDao{
 	static String query;
 	
 	@Override
-	public void saveBookBor(Book bookBor) {
+	public void saveBookBor(BookBor bookBor) {
 		try {
 			db.connect();
 			query = "INSERT INTO book_loans(code, isbn, id_mem)\n"
@@ -32,7 +32,7 @@ public class BookBorDaoImpl implements BookBorDao{
 	}
 	
 	@Override
-	public void PaymentBookBor(Book bookBor) {
+	public void PaymentBookBor(BookBor bookBor) {
 		try {
 			db.connect();
 			query = "INSERT INTO payment(id_mem, amount)\n"
@@ -46,7 +46,7 @@ public class BookBorDaoImpl implements BookBorDao{
 		
 	}
 	@Override
-	public void updateBookBor(Book bookBor) {
+	public void updateBookBor(BookBor bookBor) {
 		try {
 			db.connect();
 			query = "UPDATE book_loans SET status = false WHERE code='"+bookBor.getCode()+"'";
@@ -87,7 +87,7 @@ public class BookBorDaoImpl implements BookBorDao{
 		return result;
 	}
 	@Override
-	public int getDayDifference(Book bookBor) {
+	public int getDayDifference(BookBor bookBor) {
 		DatabaseUtil db = new DatabaseUtil();
 		int result = 0;
 		try {
@@ -124,7 +124,7 @@ public class BookBorDaoImpl implements BookBorDao{
 	}
 	
 	@Override
-	public void deleteBookBor(Book bookBor) {
+	public void deleteBookBor(BookBor bookBor) {
 		try {
 			db.connect();
 			query = "DELETE FROM book_loans WHERE code = '"+bookBor.getCode()+"';";
@@ -135,8 +135,8 @@ public class BookBorDaoImpl implements BookBorDao{
 	}
 	
 	@Override
-	public List<Book> getAllBookBor() {
-		List<Book> listBook = new ArrayList<Book>();
+	public List<BookBor> getAllBookBor() {
+		List<BookBor> listBook = new ArrayList<BookBor>();
 		DatabaseUtil db = new DatabaseUtil();
 		try {
 			db.connect();
@@ -148,7 +148,7 @@ public class BookBorDaoImpl implements BookBorDao{
             // process query results
             while (rs.next()) {
  
-            	Book book = new Book();
+            	BookBor book = new BookBor();
                 book.setCode(rs.getString("code"));
                 book.setIsbn(rs.getString("isbn"));
                 book.setIdMem(rs.getString("id_mem"));

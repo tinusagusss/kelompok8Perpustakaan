@@ -1,4 +1,4 @@
-package org.itenas.oop.uas.actor;
+package org.itenas.oop.uas.entity;
 
 import java.sql.Date;
 

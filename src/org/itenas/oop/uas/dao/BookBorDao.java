@@ -2,18 +2,18 @@ package org.itenas.oop.uas.dao;
 
 import java.util.List;
 
-import org.itenas.oop.uas.actor.Book;
+import org.itenas.oop.uas.entity.BookBor;
 
 
 public interface BookBorDao {
     
-    public List<Book> getAllBookBor();
-    public void saveBookBor(Book bookBor);
-    public void updateBookBor(Book bookBor);
+    public List<BookBor> getAllBookBor();
+    public void saveBookBor(BookBor bookBor);
+    public void updateBookBor(BookBor bookBor);
     public void deleteBookBor();
-    public void deleteBookBor(Book bookBor);
-    public void PaymentBookBor(Book bookBor);
+    public void deleteBookBor(BookBor bookBor);
+    public void PaymentBookBor(BookBor bookBor);
     
     public String getCodeBookBor();
-    public int getDayDifference(Book bookBor);
+    public int getDayDifference(BookBor bookBor);
 }

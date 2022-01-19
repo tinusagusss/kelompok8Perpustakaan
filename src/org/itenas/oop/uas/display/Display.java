@@ -2,9 +2,9 @@ package org.itenas.oop.uas.display;
 
 import java.util.*;
 
-import org.itenas.oop.uas.actor.Librarian;
 import org.itenas.oop.uas.dao.LibrarianDao;
 import org.itenas.oop.uas.daoImpl.LibrarianDaoImpl;
+import org.itenas.oop.uas.entity.Librarian;
 import org.itenas.oop.uas.form.FormView;
 
 public class Display {

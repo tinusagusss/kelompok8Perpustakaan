@@ -1,8 +1,8 @@
-package org.itenas.oop.uas.actor;
+package org.itenas.oop.uas.entity;
 
 import java.util.Date;
 
-public class Book {
+public class BookBor {
 	
 	private String isbn;
 	private String code;
