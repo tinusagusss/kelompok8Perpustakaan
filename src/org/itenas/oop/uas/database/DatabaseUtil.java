@@ -11,7 +11,7 @@ public class DatabaseUtil {
 
     String url = "jdbc:mysql://localhost:3306/perpustakaan_oop";
     String username = "root";
-    String password = "P@ssw0rd.01";
+    String password = "basdat2020";
     Connection connection = null;
     Statement statement = null;
     ResultSet resultSet = null;
