@@ -79,15 +79,15 @@ public class FormView {
 	/* Tugas 1: Step 1: Perbaiki Tampilan pada displayTableBookBor*/
 	public static void displayTableBookBor() {
 		System.out.println();
-		System.out.println("     ----------------------------------------------------------------------------------------------------------------");
-		System.out.println("    |							DATA KARYAWAN TETAP					     |");
-		System.out.println("     ----------------------------------------------------------------------------------------------------------------");
-		System.out.println("    |\tNIP\t\t|\tNama\t\t\t|       Email       			|       Total Gaji   |");
-		System.out.println("     ----------------------------------------------------------------------------------------------------------------");
+		System.out.println("    | ------------------------------------------------------------------------------------------------------------------------------------------|");
+		System.out.println("    |							Daftar Peminjaman Buku				                                        |");										
+		System.out.println("    |-------------------------------------------------------------------------------------------------------------------------------------------|");
+		System.out.println("    |\tKode Pinjam\t|\tNomor ISBN\t|\tKode Peminjaman\t|\tTanggal Pinjam\t|\tBatas Pengembalian\t|\tstatus\t|");
+		System.out.println("    |-------------------------------------------------------------------------------------------------------------------------------------------|");
 		for (Book data : operation.getAllBookBor()) {
-			System.out.println("    |\t"+data.getCode()+"\t|       "+data.getIsbn()+"\t        |       "+data.getIdMem()+"\t|\t"+data.getStartDate()+"    |");
+		System.out.println("    |\t"+data.getCode()+"\t\t|\t"+data.getIsbn()+"\t\t|\t"+data.getIdMem()+"\t\t|\t"+data.getStartDate()+"\t|\t"+data.getDueDate()+"\t\t| \t"+data.isStatus()+"\t|");
 		}
-		System.out.println("     ----------------------------------------------------------------------------------------------------------------");
+		System.out.println("    |-------------------------------------------------------------------------------------------------------------------------------------------|");
 		backToMainMenu();
 	}
 }
