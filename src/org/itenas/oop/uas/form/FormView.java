@@ -69,9 +69,18 @@ public class FormView {
 
 	public static void formSearchBookBorByCode() {
 		System.out.print("Masukkan code peminjaman: ");
-        bookBor.setCode(scanner.next());
-//		operation.getBookBorByCode(bookBor);	
-        backToMainMenu();
+        var code = scanner.next();
+		System.out.println();
+		System.out.println("    | ------------------------------------------------------------------------------------------------------------------------------------------|");
+		System.out.println("    |							Daftar Peminjaman Buku				                                        |");										
+		System.out.println("    |-------------------------------------------------------------------------------------------------------------------------------------------|");
+		System.out.println("    |\tKode Pinjam\t|\tNomor ISBN\t|\tKode Peminjaman\t|\tTanggal Pinjam\t|\tBatas Pengembalian\t|\tstatus\t|");
+		System.out.println("    |-------------------------------------------------------------------------------------------------------------------------------------------|");
+		for (BookBor data : operation.findByCode(code)) {
+			System.out.println("    |\t"+data.getCode()+"\t\t|\t"+data.getIsbn()+"\t\t|\t"+data.getIdMem()+"\t\t|\t"+data.getStartDate()+"\t|\t"+data.getDueDate()+"\t\t| \t"+data.isStatus()+"\t|");
+		}
+		System.out.println("    |-------------------------------------------------------------------------------------------------------------------------------------------|");
+		backToMainMenu();
 	}
 	
 

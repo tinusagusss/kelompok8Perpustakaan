@@ -45,16 +45,16 @@ public class Display {
 	        	FormView.formUpdateBoorBor();
 	        	break;
 	        case 3:
-	        	FormView.displayTableBookBor();
+	        	FormView.formSearchBookBorByCode();
 	        	break;
 	        case 4:
 	        	FormView.displayTableBookBor();
 	        	break;
 	        case 5:
-	        	FormView.formUpdateBoorBor();
+	        	FormView.formDeleteBookBor();
 	        	break;
 	        case 6:
-	        	FormView.formUpdateBoorBor();
+	        	FormView.formDeleteAutomatic();
 	        	break;
 	        case 0:
 	        	System.out.println("Terima kasih, Anda keluar dari aplikasi!");
@@ -69,16 +69,15 @@ public static void loginMenu() {
 		Scanner in = new Scanner(System.in);
 		LibrarianDao operation = new LibrarianDaoImpl();
 		Librarian user;
-		String username = "Lorem01", password = "12345";
-//		String username, password;
+		String username, password;
 		boolean login = false;
 		
 		do {
 			System.out.println("\n+-------------------------------------------+");
 			System.out.println("|LOGIN                                      |");
 			System.out.println("+-------------------------------------------+");
-//			System.out.print("| Username      : "); username = in.next();
-//			System.out.print("| Password   : "); password = in.next();
+			System.out.print("| Username      : "); username = in.next();
+			System.out.print("| Password   : "); password = in.next();
 			System.out.println("+-------------------------------------------+");
 			System.out.println();
 			user = operation.getEmailAndPassword(username, password);

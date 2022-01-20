@@ -59,7 +59,6 @@ public class BookBorDaoImpl implements BookBorDao{
 	
 	@Override
 	public String getCodeBookBor() {		
-		DatabaseUtil db = new DatabaseUtil();
 		StringBuffer sb = null; 
 		String result = null;
 		try {
@@ -134,9 +133,37 @@ public class BookBorDaoImpl implements BookBorDao{
 		}
 	}
 	
+	
+	@Override
+	public List<BookBor> findByCode(String code) {
+		List<BookBor> bookBors = new ArrayList<>();
+		try {
+			db.connect();
+			 
+			query = "SELECT * FROM book_loans where code ='"+code+"'";
+            ResultSet rs = db.readData(query);
+            while (rs.next()) {
+            	bookBors.add(new BookBor(
+	               rs.getString("code"),
+	               rs.getString("isbn"),
+	               rs.getString("id_mem"),
+	               rs.getDate("start_date"),
+	               rs.getDate("due_date"),
+	               rs.getBoolean("status")
+                ));
+
+            } 
+            db.disconnect();
+			
+		} catch (SQLException ex) {
+			System.out.println("Terjadi error: " + ex.getMessage());
+		}
+		return bookBors;
+
+	}
+	
 	@Override
 	public List<BookBor> getAllBookBor() {
-		DatabaseUtil db = new DatabaseUtil();
 		List<BookBor> bookBors = new ArrayList<>();
 		try {
 			db.connect();
