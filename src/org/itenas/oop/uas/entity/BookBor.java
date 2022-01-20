@@ -4,8 +4,28 @@ import java.util.Date;
 
 public class BookBor {
 	
-	private String isbn;
+	public BookBor() {
+		
+	}
+
+	public BookBor(String isbn, String idMem) {
+		this.isbn = isbn;
+		this.idMem = idMem;
+	}
+	
+	
+
+	public BookBor(String code, String isbn, String idMem, Date startDate, Date dueDate, boolean status) {
+		this.isbn = isbn;
+		this.code = code;
+		this.idMem = idMem;
+		this.startDate = startDate;
+		this.dueDate = dueDate;
+		this.status = status;
+	}
+
 	private String code;
+	private String isbn;
 	private String idMem;
 	private Date startDate;
 	private Date dueDate;

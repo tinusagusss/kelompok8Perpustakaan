@@ -8,7 +8,7 @@ import org.itenas.oop.uas.entity.BookBor;
 public interface BookBorDao {
     
     public List<BookBor> getAllBookBor();
-    public void saveBookBor(BookBor bookBor);
+    public void inserBookBor(BookBor bookBor);
     public void updateBookBor(BookBor bookBor);
     public void deleteBookBor();
     public void deleteBookBor(BookBor bookBor);

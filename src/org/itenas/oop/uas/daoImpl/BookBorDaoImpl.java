@@ -17,7 +17,7 @@ public class BookBorDaoImpl implements BookBorDao{
 	static String query;
 	
 	@Override
-	public void saveBookBor(BookBor bookBor) {
+	public void inserBookBor(BookBor bookBor) {
 		try {
 			db.connect();
 			query = "INSERT INTO book_loans(code, isbn, id_mem)\n"
@@ -136,36 +136,32 @@ public class BookBorDaoImpl implements BookBorDao{
 	
 	@Override
 	public List<BookBor> getAllBookBor() {
-		List<BookBor> listBook = new ArrayList<BookBor>();
 		DatabaseUtil db = new DatabaseUtil();
+		List<BookBor> bookBors = new ArrayList<>();
 		try {
 			db.connect();
 			 
 			query = "SELECT * FROM book_loans";
          
             ResultSet rs = db.readData(query);
- 
-            // process query results
             while (rs.next()) {
- 
-            	BookBor book = new BookBor();
-                book.setCode(rs.getString("code"));
-                book.setIsbn(rs.getString("isbn"));
-                book.setIdMem(rs.getString("id_mem"));
-                book.setStartDate(rs.getDate("start_date"));
-                book.setDueDate(rs.getDate("due_date"));
-                book.setStatus(rs.getBoolean("status"));
-                listBook.add(book);
- 
+            	bookBors.add(new BookBor(
+	               rs.getString("code"),
+	               rs.getString("isbn"),
+	               rs.getString("id_mem"),
+	               rs.getDate("start_date"),
+	               rs.getDate("due_date"),
+	               rs.getBoolean("status")
+                ));
+
             } 
-            //close db connection
             db.disconnect();
 			
 		} catch (SQLException ex) {
 			System.out.println("Terjadi error: " + ex.getMessage());
 		}
+		return bookBors;
 		
-		return listBook;
 	}
 	
 }
