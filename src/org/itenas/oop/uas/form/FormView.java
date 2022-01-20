@@ -1,6 +1,8 @@
 package org.itenas.oop.uas.form;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.itenas.oop.uas.dao.BookBorDao;
 import org.itenas.oop.uas.daoImpl.BookBorDaoImpl;
@@ -13,6 +15,12 @@ public class FormView {
 	static char back;
 	static BookBor bookBor = new BookBor();
 	static BookBorDao operation = new BookBorDaoImpl();
+	
+	private static final Pattern[] regex = new Pattern[2];
+	static {
+		regex[0] = Pattern.compile(".*[0-9].*");
+		regex[1] = Pattern.compile(".*[A-Z].*");
+		}
 	
 	public static void backToMainMenu() {
         System.out.print("[B] Tekan Tombol B untuk kembali ke menu sebelumnya: ");
@@ -69,7 +77,12 @@ public class FormView {
 
 	public static void formSearchBookBorByCode() {
 		System.out.print("Masukkan code peminjaman: ");
-        var code = scanner.next();
+		boolean check = false;
+		String code;
+		do {
+        code = scanner.next();
+        check = isMatchingRegex(code);
+        } while (!check);
 		System.out.println();
 		System.out.println("    | ------------------------------------------------------------------------------------------------------------------------------------------|");
 		System.out.println("    |							Daftar Peminjaman Buku				                                        |");										
@@ -96,5 +109,15 @@ public class FormView {
 		}
 		System.out.println("    |-------------------------------------------------------------------------------------------------------------------------------------------|");
 		backToMainMenu();
+	}
+	
+	private static boolean isMatchingRegex(String input) {
+	    boolean inputMatches = true;
+	    for (Pattern inputRegex : regex) {
+	        if (!inputRegex.matcher(input).matches()) {
+	            inputMatches = false;
+	        }
+	    }
+	    return inputMatches;
 	}
 }

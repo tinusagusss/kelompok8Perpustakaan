@@ -71,13 +71,12 @@ public static void loginMenu() {
 		Librarian user;
 		String username, password;
 		boolean login = false;
-		
 		do {
 			System.out.println("\n+-------------------------------------------+");
-			System.out.println("|LOGIN                                      |");
+			System.out.println("|                   LOGIN                   |");
 			System.out.println("+-------------------------------------------+");
 			System.out.print("| Username      : "); username = in.next();
-			System.out.print("| Password   : "); password = in.next();
+			System.out.print("| Password      : "); password = in.next();
 			System.out.println("+-------------------------------------------+");
 			System.out.println();
 			user = operation.getEmailAndPassword(username, password);

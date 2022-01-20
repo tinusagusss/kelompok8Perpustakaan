@@ -13,7 +13,6 @@ public class BookBor {
 		this.idMem = idMem;
 	}
 	
-	
 
 	public BookBor(String code, String isbn, String idMem, Date startDate, Date dueDate, boolean status) {
 		this.isbn = isbn;
